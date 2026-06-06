@@ -1,7 +1,9 @@
 function Navbar() {
   return (
-    <nav>
-      <h1>LeetCode Tracker</h1>
+    <nav className="bg-white shadow-md px-8 py-4">
+      <h1 className="text-2xl font-bold text-orange-500">
+        LeetCode Tracker
+      </h1>
     </nav>
   );
 }
