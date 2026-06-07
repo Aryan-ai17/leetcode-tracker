@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { getUserData } from "../services/leetcodeApi.js";
+import UserCard from "./UserCard.jsx";
 
 function SearchBar() {
   const [username, setUsername] = useState("");
+  const [userData, setUserData] = useState(null);
 
   async function handleSearch() {
-  const data = await getUserData(username);
+    const data = await getUserData(username);
 
-  console.log(data);
-}
+    setUserData(data);
+  }
 
   return (
     <div>
@@ -17,7 +19,9 @@ function SearchBar() {
           type="text"
           placeholder="Enter LeetCode username"
           value={username}
-          onChange={(event) => setUsername(event.target.value)}
+          onChange={(event) =>
+            setUsername(event.target.value)
+          }
           className="border border-gray-300 rounded-lg px-4 py-3 w-80 outline-none focus:ring-2 focus:ring-orange-400"
         />
 
@@ -32,6 +36,10 @@ function SearchBar() {
       <p className="mt-4 text-gray-700">
         {username}
       </p>
+
+      {userData && (
+        <UserCard userData={userData} />
+      )}
     </div>
   );
 }
