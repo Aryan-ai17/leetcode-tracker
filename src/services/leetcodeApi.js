@@ -19,10 +19,18 @@ export async function getUserData(username) {
           ranking
           userAvatar
         }
+
+        submissionCalendar
       }
 
       userContestRanking(username: $username) {
         rating
+      }
+
+      recentAcSubmissionList(username: $username) {
+        title
+        titleSlug
+        timestamp
       }
     }
   `;
@@ -40,9 +48,14 @@ export async function getUserData(username) {
 
     return {
       ...response.data.data.matchedUser,
+
       contestRating:
-        response.data.data.userContestRanking
-          ?.rating,
+        response.data.data
+          .userContestRanking?.rating,
+
+      recentSubmissions:
+        response.data.data
+          .recentAcSubmissionList,
     };
   } catch (error) {
     console.log(error);

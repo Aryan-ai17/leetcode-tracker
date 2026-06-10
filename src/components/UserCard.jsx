@@ -1,15 +1,32 @@
 import StatsChart from "./StatsChart";
+import RecentSubmissions from "./RecentSubmission.jsx";
+
 
 function UserCard({ userData }) {
   return (
-    <div>
-      <div className="mt-8 bg-white shadow-lg rounded-2xl p-6 w-[450px]">
-        <h2 className="text-2xl font-bold mb-4">
+    <div className="flex gap-6 items-start mt-8 flex-wrap justify-center">
+
+      <div className="bg-white shadow-lg rounded-2xl p-6 w-[450px]">
+        <img
+          src={userData.profile.userAvatar}
+          alt="profile"
+          className="w-24 h-24 rounded-full mx-auto mb-4 border"
+        />
+
+        <h2 className="text-2xl font-bold text-center mb-4">
           {userData.username}
         </h2>
 
         <p className="mb-2">
           Ranking: {userData.profile.ranking}
+        </p>
+
+        <p className="mb-2">
+          Contest Rating: {
+            userData.contestRating
+              ? Math.round(userData.contestRating)
+              : "Not Available"
+          }
         </p>
 
         <p className="mb-4 font-medium">
@@ -43,9 +60,14 @@ function UserCard({ userData }) {
         </div>
       </div>
 
-     <div className="mt-6">
       <StatsChart userData={userData} />
-    </div>
+      <RecentSubmissions
+        recentSubmissions={
+          userData.recentSubmissions
+        }
+            
+        
+/>
     </div>
   );
 }
