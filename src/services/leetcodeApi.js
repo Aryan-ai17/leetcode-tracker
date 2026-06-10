@@ -17,7 +17,12 @@ export async function getUserData(username) {
 
         profile {
           ranking
+          userAvatar
         }
+      }
+
+      userContestRanking(username: $username) {
+        rating
       }
     }
   `;
@@ -33,7 +38,12 @@ export async function getUserData(username) {
       }
     );
 
-    return response.data.data.matchedUser;
+    return {
+      ...response.data.data.matchedUser,
+      contestRating:
+        response.data.data.userContestRanking
+          ?.rating,
+    };
   } catch (error) {
     console.log(error);
   }
