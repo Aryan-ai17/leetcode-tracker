@@ -7,30 +7,39 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-function StatsChart({ userData }) {
+function StatsChart({
+  userData,
+  darkMode,
+}) {
   const chartData = [
     {
       difficulty: "Easy",
       solved:
-        userData.submitStats.acSubmissionNum[1]
-          .count,
+        userData.submitStats
+          .acSubmissionNum[1].count,
     },
     {
       difficulty: "Medium",
       solved:
-        userData.submitStats.acSubmissionNum[2]
-          .count,
+        userData.submitStats
+          .acSubmissionNum[2].count,
     },
     {
       difficulty: "Hard",
       solved:
-        userData.submitStats.acSubmissionNum[3]
-          .count,
+        userData.submitStats
+          .acSubmissionNum[3].count,
     },
   ];
 
   return (
-    <div className="mt-8 bg-white rounded-2xl shadow-lg p-6 w-[450px]">
+    <div
+      className={`mt-8 rounded-2xl shadow-lg p-6 w-[450px] ${
+        darkMode
+          ? "bg-gray-800 text-white"
+          : "bg-white text-black"
+      }`}
+    >
       <h2 className="text-xl font-bold mb-4">
         Problem Stats
       </h2>

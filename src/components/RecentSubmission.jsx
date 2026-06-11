@@ -1,12 +1,19 @@
 function RecentSubmissions({
   recentSubmissions,
+  darkMode,
 }) {
   if (!recentSubmissions) {
     return null;
   }
 
   return (
-    <div className="bg-white shadow-lg rounded-2xl p-6 w-[450px]">
+    <div
+      className={`shadow-lg rounded-2xl p-6 w-[450px] ${
+        darkMode
+          ? "bg-gray-800 text-white"
+          : "bg-white text-black"
+      }`}
+    >
       <h2 className="text-xl font-bold mb-4">
         Recent Submissions
       </h2>
@@ -16,16 +23,20 @@ function RecentSubmissions({
           (submission, index) => (
             <div
               key={index}
-              className="border rounded-lg p-3 hover:bg-gray-100 transition"
+              className={`border rounded-lg p-3 transition ${
+                darkMode
+                  ? "hover:bg-gray-700"
+                  : "hover:bg-gray-100"
+              }`}
             >
               <a
-               href={`https://leetcode.com/problems/${submission.titleSlug}/`}
-               target="_blank"
+                href={`https://leetcode.com/problems/${submission.titleSlug}/`}
+                target="_blank"
                 rel="noopener noreferrer"
-               className="font-medium text-blue-600 hover:underline"
-            >
-           {submission.title}
-</a>
+                className="font-medium text-blue-500 hover:underline"
+              >
+                {submission.title}
+              </a>
             </div>
           )
         )}

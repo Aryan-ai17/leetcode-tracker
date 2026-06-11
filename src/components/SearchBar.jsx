@@ -2,7 +2,7 @@ import { useState } from "react";
 import { getUserData } from "../services/leetcodeApi.js";
 import UserCard from "./UserCard.jsx";
 
-function SearchBar() {
+function SearchBar({ darkMode }) {
   const [username, setUsername] = useState("");
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -69,7 +69,10 @@ function SearchBar() {
 
       <div className="flex justify-center mt-8">
         {userData && (
-          <UserCard userData={userData} />
+          <UserCard 
+          userData={userData}
+          darkMode={darkMode} 
+          />
         )}
       </div>
     </div>

@@ -1,12 +1,20 @@
-import StatsChart from "./StatsChart";
+import StatsChart from "./StatsChart.jsx";
 import RecentSubmissions from "./RecentSubmission.jsx";
 
-
-function UserCard({ userData }) {
+function UserCard({
+  userData,
+  darkMode,
+}) {
   return (
     <div className="flex gap-6 items-start mt-8 flex-wrap justify-center">
 
-      <div className="bg-white shadow-lg rounded-2xl p-6 w-[450px]">
+      <div
+        className={`shadow-lg rounded-2xl p-6 w-[450px] ${
+          darkMode
+            ? "bg-gray-800 text-white"
+            : "bg-white text-black"
+        }`}
+      >
         <img
           src={userData.profile.userAvatar}
           alt="profile"
@@ -24,50 +32,55 @@ function UserCard({ userData }) {
         <p className="mb-2">
           Contest Rating: {
             userData.contestRating
-              ? Math.round(userData.contestRating)
+              ? Math.round(
+                  userData.contestRating
+                )
               : "Not Available"
           }
         </p>
 
         <p className="mb-4 font-medium">
           Total Solved: {
-            userData.submitStats.acSubmissionNum[0]
-              .count
+            userData.submitStats
+              .acSubmissionNum[0].count
           }
         </p>
 
         <div className="space-y-3">
-          <div className="bg-green-100 p-3 rounded-lg">
+          <div className="bg-green-100 text-black p-3 rounded-lg">
             Easy: {
-              userData.submitStats.acSubmissionNum[1]
-                .count
+              userData.submitStats
+                .acSubmissionNum[1].count
             }
           </div>
 
-          <div className="bg-yellow-100 p-3 rounded-lg">
+          <div className="bg-yellow-100 text-black p-3 rounded-lg">
             Medium: {
-              userData.submitStats.acSubmissionNum[2]
-                .count
+              userData.submitStats
+                .acSubmissionNum[2].count
             }
           </div>
 
-          <div className="bg-red-100 p-3 rounded-lg">
+          <div className="bg-red-100 text-black p-3 rounded-lg">
             Hard: {
-              userData.submitStats.acSubmissionNum[3]
-                .count
+              userData.submitStats
+                .acSubmissionNum[3].count
             }
           </div>
         </div>
       </div>
 
-      <StatsChart userData={userData} />
+      <StatsChart 
+      userData={userData}
+      darkMode={darkMode} 
+      />
+
       <RecentSubmissions
         recentSubmissions={
           userData.recentSubmissions
         }
-            
-        
-/>
+        darkMode={darkMode}
+      />
     </div>
   );
 }
