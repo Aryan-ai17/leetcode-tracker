@@ -1,5 +1,6 @@
 import StatsChart from "./StatsChart.jsx";
 import RecentSubmissions from "./RecentSubmission.jsx";
+import Heatmap from "./Heatmap.jsx";
 
 function UserCard({
   userData,
@@ -81,6 +82,12 @@ function UserCard({
         }
         darkMode={darkMode}
       />
+      <Heatmap
+        submissionCalendar={
+        userData.submissionCalendar
+      }
+      darkMode={darkMode}
+/>
     </div>
   );
 }

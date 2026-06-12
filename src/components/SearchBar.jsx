@@ -19,6 +19,7 @@ function SearchBar({ darkMode }) {
     setError("");
     
     const data = await getUserData(username);
+    console.log(data);
 
     
 
