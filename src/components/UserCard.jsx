@@ -1,5 +1,5 @@
 import StatsChart from "./StatsChart.jsx";
-import RecentSubmissions from "./RecentSubmission.jsx";
+import RecentSubmission from "./RecentSubmission.jsx";
 import Heatmap from "./Heatmap.jsx";
 
 function UserCard({
@@ -9,85 +9,92 @@ function UserCard({
   return (
     <div className="flex gap-6 items-start mt-8 flex-wrap justify-center">
 
+      {/* Profile Card */}
       <div
-        className={`shadow-lg rounded-2xl p-6 w-[450px] ${
+        className={`shadow-xl rounded-3xl p-8 w-[380px] transition hover:scale-[1.02] ${
           darkMode
-            ? "bg-gray-800 text-white"
-            : "bg-white text-black"
+            ? "bg-gray-800 text-white border border-gray-700"
+            : "bg-white text-black border border-gray-200"
         }`}
       >
-        <img
-          src={userData.profile.userAvatar}
-          alt="profile"
-          className="w-24 h-24 rounded-full mx-auto mb-4 border"
-        />
+        <div className="flex flex-col items-center">
+          <img
+            src={userData.profile.userAvatar}
+            alt="profile"
+            className="w-28 h-28 rounded-full border-4 border-orange-400 shadow-md"
+          />
 
-        <h2 className="text-2xl font-bold text-center mb-4">
-          {userData.username}
-        </h2>
+          <h2 className="text-3xl font-bold mt-4">
+            {userData.username}
+          </h2>
 
-        <p className="mb-2">
-          Ranking: {userData.profile.ranking}
-        </p>
+          <p className="text-gray-400 text-sm mb-6">
+            LeetCode Profile
+          </p>
+        </div>
 
-        <p className="mb-2">
-          Contest Rating: {
-            userData.contestRating
-              ? Math.round(
-                  userData.contestRating
-                )
-              : "Not Available"
-          }
-        </p>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="rounded-2xl bg-orange-100 text-black p-4">
+            <p className="text-sm text-gray-600">
+              Ranking
+            </p>
 
-        <p className="mb-4 font-medium">
-          Total Solved: {
-            userData.submitStats
-              .acSubmissionNum[0].count
-          }
-        </p>
-
-        <div className="space-y-3">
-          <div className="bg-green-100 text-black p-3 rounded-lg">
-            Easy: {
-              userData.submitStats
-                .acSubmissionNum[1].count
-            }
+            <h3 className="text-xl font-bold">
+              {userData.profile.ranking}
+            </h3>
           </div>
 
-          <div className="bg-yellow-100 text-black p-3 rounded-lg">
-            Medium: {
-              userData.submitStats
-                .acSubmissionNum[2].count
-            }
+          <div className="rounded-2xl bg-blue-100 text-black p-4">
+            <p className="text-sm text-gray-600">
+              Contest Rating
+            </p>
+
+            <h3 className="text-xl font-bold">
+              {userData.contestRating
+                ? Math.round(
+                    userData.contestRating
+                  )
+                : "N/A"}
+            </h3>
           </div>
 
-          <div className="bg-red-100 text-black p-3 rounded-lg">
-            Hard: {
-              userData.submitStats
-                .acSubmissionNum[3].count
-            }
+          <div className="rounded-2xl bg-green-100 text-black p-4 col-span-2">
+            <p className="text-sm text-gray-600">
+              Total Solved
+            </p>
+
+            <h3 className="text-2xl font-bold">
+              {
+                userData.submitStats
+                  .acSubmissionNum[0]
+                  .count
+              }
+            </h3>
           </div>
         </div>
       </div>
 
-      <StatsChart 
-      userData={userData}
-      darkMode={darkMode} 
+      {/* Stats Chart */}
+      <StatsChart
+        userData={userData}
+        darkMode={darkMode}
       />
 
-      <RecentSubmissions
-        recentSubmissions={
-          userData.recentSubmissions
+      {/* Recent Submissions */}
+      <RecentSubmission
+        recentSubmission={
+          userData.recentSubmission
         }
         darkMode={darkMode}
       />
+
+      {/* Heatmap */}
       <Heatmap
         submissionCalendar={
-        userData.submissionCalendar
-      }
-      darkMode={darkMode}
-/>
+          userData.submissionCalendar
+        }
+        darkMode={darkMode}
+      />
     </div>
   );
 }
