@@ -1,88 +1,104 @@
-# LeetCode Progress Tracker
+# 🧠 LeetCode Progress Tracker
 
-A modern frontend application to track and visualize LeetCode progress using real-time profile statistics.
+A modern LeetCode analytics dashboard that lets you search any username and visualize their profile insights — ranking, problem stats, submission heatmaps, contest rating, and more.
 
-Built with **React.js, Vite, Tailwind CSS, and LeetCode GraphQL API**.
+🌐 **Live Demo:** [leetcode-tracker-haqyus4vj-aryan-yadav-s-projects3.vercel.app](https://leetcode-tracker-haqyus4vj-aryan-yadav-s-projects3.vercel.app/)
 
-## Features
+---
 
-* Search any LeetCode username
-* Fetch real-time LeetCode profile data
-* View profile ranking
-* Track solved problems
-* Easy / Medium / Hard problem statistics
-* Responsive modern UI
-* API integration with LeetCode
+## ✨ Features
 
-## Tech Stack
+- 🔍 Search any LeetCode username instantly
+- 🏆 View global ranking and profile overview
+- 📊 Interactive problem-solving statistics chart (Easy / Medium / Hard)
+- 📈 Submission activity heatmap visualization
+- 📝 Recent accepted submissions with direct links to problems
+- 🎯 Contest rating tracking
+- 🌙 Dark mode support
+- ⚡ Loading states and error handling
+- 📱 Fully responsive dashboard UI
 
-### Frontend
+---
 
-* React.js
-* Vite
-* Tailwind CSS
+## 🛠️ Tech Stack
 
-### API
+| Layer | Technology |
+|-------|------------|
+| Frontend | React.js + Vite |
+| Styling | Tailwind CSS |
+| Charts | Recharts |
+| HTTP Client | Axios |
+| API | LeetCode GraphQL API |
+| Deployment | Vercel |
 
-* LeetCode GraphQL API
-* Axios
+---
 
-## Project Structure
+## 📂 Project Structure
 
-```txt
+```
 src/
-│── components/
+├── components/
 │   ├── Navbar.jsx
 │   ├── SearchBar.jsx
+│   ├── UserCard.jsx
+│   ├── StatsChart.jsx
+│   ├── Heatmap.jsx
+│   └── RecentSubmissions.jsx
 │
-│── pages/
+├── pages/
 │   └── Home.jsx
 │
-│── services/
+├── services/
 │   └── leetcodeApi.js
 │
-│── styles/
-│   └── global.css
-│
-│── App.jsx
-│── main.jsx
+├── App.jsx
+└── main.jsx
 ```
 
-## Installation
+---
 
-Clone the repository:
-
-```bash
-git clone <your-repo-url>
-```
-
-Move into project directory:
+## 🚀 Getting Started
 
 ```bash
+# Clone the repository
+git clone https://github.com/Aryan-ai17/leetcode-tracker.git
+
+# Move into the project directory
 cd leetcode-tracker
-```
 
-Install dependencies:
-
-```bash
+# Install dependencies
 npm install
-```
 
-Start development server:
-
-```bash
+# Start the development server
 npm run dev
 ```
 
-## Future Improvements
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-* Contest rating tracking
-* Submission history
-* Progress charts
-* Daily streak tracking
-* Compare multiple users
-* Dark mode
+---
 
-## Status
+## 🎯 Roadmap
 
-🚧 Currently under development
+- [ ] Advanced calendar heatmap
+- [ ] Profile comparison (side-by-side two users)
+- [ ] Search history with local storage
+- [ ] Better analytics — streak tracking, topic-wise breakdown
+- [ ] Mobile UI improvements
+
+---
+
+## 📌 Status
+
+✅ Actively maintained and deployed on Vercel
+
+---
+
+## 🙋‍♂️ Author
+
+**Aryan Yadav**
+- GitHub: [@Aryan-ai17](https://github.com/Aryan-ai17)
+
+
+---
+
+> Built to track consistency — because what gets measured, gets improved. 🚀
